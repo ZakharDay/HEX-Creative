@@ -14,13 +14,10 @@
 
         $('#button').on('click', function() {
           ideas = $('#ideas').val().replace(/\n\n/g, ',').split(',')
-          console.log(ideas)
 
           ideas.forEach(function(element) {
-            // console.log(element)
             element = element.replace(/\n/g, ',').split(',')
-            // console.log(element.replace(/\n/g, ',').split(','))
-            //
+
             problems.push(element[0])
             fields.push(element[1])
             audiences.push(element[2])
