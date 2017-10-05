@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var ideas
+        var problems = []
+        var fields = []
+        var audiences = []
+
+        $('#button').on('click', function() {
+          ideas = $('#ideas').val().replace(/\n\n/g, ',').split(',')
+          console.log(ideas)
+
+          ideas.forEach(function(element) {
+            // console.log(element)
+            element = element.replace(/\n/g, ',').split(',')
+            // console.log(element.replace(/\n/g, ',').split(','))
+            //
+            problems.push(element[0])
+            fields.push(element[1])
+            audiences.push(element[2])
+          })
+
+          $('#problems').val(problems.join('\n'))
+          $('#fields').val(fields.join('\n'))
+          $('#audiences').val(audiences.join('\n'))
+        })
+      })
+    </script>
+  </head>
+  <body>
+
+    <textarea id="ideas" name="name" rows="8" cols="80"></textarea>
+    <div id="button">Generate</div>
+
+    <textarea id="problems"></textarea>
+    <textarea id="fields"></textarea>
+    <textarea id="audiences"></textarea>
+  </body>
+</html>

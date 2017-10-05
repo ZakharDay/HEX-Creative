@@ -46,10 +46,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 50px 0;
+        padding: 50px 50px;
       }
 
       #result {
+        text-align: center;
         font-size: 40px;
       }
 
@@ -78,30 +79,22 @@
           return this[Math.floor(Math.random() * this.length)]
         }
 
-        var problems = [
-          'problem 1',
-          'problem 2',
-          'problem 3'
-        ]
-
-        var fields = [
-          'field 1',
-          'field 2',
-          'field 3'
-        ]
-
-        var audiences = [
-          'audience 1',
-          'audience 2',
-          'audience 3'
-        ]
+        var problems, fields, audiences
 
         function generateIdea() {
+          problems  = stringToArray($("#problems"))
+          fields    = stringToArray($("#fields"))
+          audiences = stringToArray($("#audiences"))
+
           $('#result').text([
             problems.randomElement(),
             fields.randomElement(),
             audiences.randomElement()
           ].join(' '))
+        }
+
+        function stringToArray(element) {
+          return element.val().replace(/\n/g, ',').split(',')
         }
 
         $('#button').on('click', function () {
@@ -116,17 +109,17 @@
     <div class="textaresContainer">
       <div>
         <label for="problems">Problems</label>
-        <textarea name="problems"></textarea>
+        <textarea id="problems" name="problems"></textarea>
       </div>
 
       <div>
         <label for="fields">Fields</label>
-        <textarea name="fields"></textarea>
+        <textarea id="fields" name="fields"></textarea>
       </div>
 
       <div>
         <label for="audiences">Audiences</label>
-        <textarea name="audiences"></textarea>
+        <textarea id="audiences" name="audiences"></textarea>
       </div>
     </div>
 
