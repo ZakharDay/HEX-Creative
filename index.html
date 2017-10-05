@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ideas Generator</title>
+
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|PT+Sans:400,400i,700,700i&amp;subset=cyrillic" rel="stylesheet">
+
+    <style media="screen">
+
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-family: 'PT Sans', sans-serif;
+      }
+
+      label {
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        font-size: 20px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      textarea {
+        width: 24vw;
+        height: 400px;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .textaresContainer {
+        display: flex;
+        justify-content: space-around;
+        padding: 50px 0;
+      }
+
+      .resultContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 0;
+      }
+
+      #result {
+        font-size: 40px;
+      }
+
+      #button {
+        height: 40px;
+        line-height: 40px;
+        font-size: 40px;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+      }
+
+      #button:active {
+        background-color: grey;
+      }
+    </style>
+
+    <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      $(function() {
+
+        Array.prototype.randomElement = function () {
+          return this[Math.floor(Math.random() * this.length)]
+        }
+
+        var problems = [
+          'problem 1',
+          'problem 2',
+          'problem 3'
+        ]
+
+        var fields = [
+          'field 1',
+          'field 2',
+          'field 3'
+        ]
+
+        var audiences = [
+          'audience 1',
+          'audience 2',
+          'audience 3'
+        ]
+
+        function generateIdea() {
+          $('#result').text([
+            problems.randomElement(),
+            fields.randomElement(),
+            audiences.randomElement()
+          ].join(' '))
+        }
+
+        $('#button').on('click', function () {
+          generateIdea()
+        })
+
+      })
+    </script>
+  </head>
+  <body>
+
+    <div class="textaresContainer">
+      <div>
+        <label for="problems">Problems</label>
+        <textarea name="problems"></textarea>
+      </div>
+
+      <div>
+        <label for="fields">Fields</label>
+        <textarea name="fields"></textarea>
+      </div>
+
+      <div>
+        <label for="audiences">Audiences</label>
+        <textarea name="audiences"></textarea>
+      </div>
+    </div>
+
+    <div class="resultContainer">
+      <div id="result">Result</div>
+      <div id="button">Generate</div>
+    </div>
+
+  </body>
+</html>
